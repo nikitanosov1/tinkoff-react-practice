@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding-left: 16px;
+  padding-right: 16px; */
+  padding: 8px 16px 8px 16px;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.header:hover {
+}
+
+.leftText {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #000000;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.rightText {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  
+  color: #000000;
+}
+
+
+.rightRectangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 233px;
+  height: 37.9px;
+
+  background: #FFDD2D;
+  border-radius: 8px;
+}
