@@ -13,6 +13,9 @@ export const Movie = ({title, year, genres, selected, ...props} : MovieProps) =>
                 <div className={style.year}>
                     {year ?? 'Год'}
                 </div>
+                <div className={style.dash}>
+                    |
+                </div>
                 <div className={style.genres}>
                     {Array.from(genres).map((genre) => (
                         <div className={style.genre} key={genre}>
