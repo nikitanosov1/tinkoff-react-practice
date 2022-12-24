@@ -9,3 +9,7 @@ export type MovieProps = {
 export type MovieListProps = {
     movies: MovieProps[];
 };
+
+export type SearchBarProps = {
+    onChange: () => void;
+};
