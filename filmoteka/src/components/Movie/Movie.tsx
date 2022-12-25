@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import type { MovieProps } from '../../types';
 import style from './Movie.module.css';
+import { useNavigate } from 'react-router-dom';
 
-export const Movie = ({title, year, genres, selected, ...props} : MovieProps) => {
+export const Movie = ({id, title, year, genres, selected, ...props} : MovieProps) => {
+    const navigate = useNavigate();
 
     return (
-        <div className={style.movie}>
+        <div id={id.toString()} className={style.movie} onClick={() => navigate(`/movies/${id}`)}>
             <div className={style.title}>
                 {title ?? 'Название'}
             </div>

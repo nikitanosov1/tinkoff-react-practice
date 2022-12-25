@@ -1,14 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import './App.css';
-import { Header } from './components/Header/Header';
-import { Main } from './components/Main/Main';
-import { Movie } from './components/Movie/Movie';
-import { MovieList } from './components/MovieList/MovieList';
+import { MovieDetails } from "./components/MovieDetails/MovieDetails";
+import { Home } from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main />
+      <Routes>
+        {/* <Route path="/movies" element={<Home />} /> */}
+        <Route path="/movies/:id/*" element={<Home />} />
+      </Routes>
     </div>
   );
 }

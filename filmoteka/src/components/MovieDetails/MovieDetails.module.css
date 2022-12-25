@@ -16,6 +16,30 @@
     justify-content: space-between;
 }
 
+.idBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.copyButtonImage {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.editBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.editButtonImage {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
 /* Main */
 
 .movieDetailsMain {
