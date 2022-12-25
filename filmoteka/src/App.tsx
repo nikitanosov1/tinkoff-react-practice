@@ -3,9 +3,6 @@ import './App.css';
 import { Header } from "./components/Header/Header";
 import { Main } from "./components/Main/Main";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
-import { Temp } from "./components/Temp";
-import { HomePage } from './pages/HomePage';
-import { MovieDetailsPage } from "./pages/MovieDetailsPage";
 
 function App() {
   return (
