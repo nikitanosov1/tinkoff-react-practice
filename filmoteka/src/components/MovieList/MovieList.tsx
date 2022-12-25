@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import type { MovieListProps, MovieProps } from '../../types';
 import { Movie } from '../Movie/Movie';
-import { SearchBar } from '../SearchBar/SearchBar';
 import { getMovies } from './../../Services/apiService';
 import style from './MovieList.module.css';
 
@@ -18,12 +17,12 @@ export const MovieList = () => {
 
     return (
         <div>
-            <input 
+            <input
+                type="text"
                 className={style.input} 
                 placeholder='Введите название фильма'
                 onChange={(event) => setQuery(event.target.value)}
-            >
-            </input>
+            ></input>
             {Array.from(movies)
                 .filter((movie : MovieProps) => movie.title.toLowerCase().includes(query.toLowerCase()))
                 .map((movie : MovieProps) => (
