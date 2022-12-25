@@ -1,14 +1,21 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import './App.css';
+import { Header } from "./components/Header/Header";
+import { Main } from "./components/Main/Main";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
-import { Home } from './pages/Home';
+import { Temp } from "./components/Temp";
+import { HomePage } from './pages/HomePage';
+import { MovieDetailsPage } from "./pages/MovieDetailsPage";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <Routes>
-        {/* <Route path="/movies" element={<Home />} /> */}
-        <Route path="/movies/:id/*" element={<Home />} />
+        <Route path='/movies' element={<Main />}>
+          <Route path=":id" element={<MovieDetails />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/movies" replace />} />
       </Routes>
     </div>
   );
