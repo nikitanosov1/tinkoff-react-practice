@@ -3,6 +3,7 @@ import './App.css';
 import { Header } from "./components/Header/Header";
 import { Main } from "./components/Main/Main";
 import { MovieDetails } from "./components/MovieDetails/MovieDetails";
+import { MovieEditForm } from "./components/MovieEditForm/MovieEditForm";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/movies' element={<Main />}>
           <Route path=":id" element={<MovieDetails />} />
+          <Route path=":id/edit" element={<MovieEditForm />} />
         </Route>
         <Route path="*" element={<Navigate to="/movies" replace />} />
       </Routes>

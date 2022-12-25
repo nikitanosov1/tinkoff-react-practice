@@ -42,5 +42,6 @@ export type MovieDetailsData = {
     director: string;
     actors: string;
     plot: string;
+    rate: number;
     posterUrl: string;
 };

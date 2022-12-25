@@ -3,17 +3,18 @@ import Camel from './../../assets/camel.jpg';
 import CopyButton from './../../assets/copy.png';
 import EditButton from './../../assets/edit.png';
 import style from './MovieDetails.module.css';
-import { useParams } from "react-router-dom";
-import { getMovieById } from './../../Services/apiService.js';
+import { useParams, useNavigate } from "react-router-dom";
+import { getMovieById } from './../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 
 
 export const MovieDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [movie, setMovie] = useState<MovieDetailsData>();
 
     useEffect(() => {
-        getMovieById(id).then((response) => {
+        getMovieById(Number(id)).then((response) => {
                 setMovie(response);
             }
         );
@@ -23,7 +24,11 @@ export const MovieDetails = () => {
         <div className={style.movieDetails}>
             <div className={style.movieDetailsHeader}>
                 <div className={style.idBlock}>Id: {movie?.id}<img className={style.copyButtonImage} src={CopyButton}></img></div>
-                <div className={style.editBlock}><img className={style.editButtonImage} src={EditButton}></img>Редактировать</div>
+                <div 
+                    className={style.editBlock}
+                    onClick={() => {navigate(`/movies/${id}/edit`)}}
+                ><img className={style.editButtonImage} src={EditButton}></img>Редактировать
+                </div>
             </div>
             <div className={style.movieDetailsMain}>
                 <img className={style.imageWrapper} width='300px' height='300px' src={movie?.posterUrl} alt="camel"/>
@@ -66,7 +71,7 @@ export const MovieDetails = () => {
             </section>
             <section className={style.rateSection}>
                 <div className={style.rateTitle}>Текущий рейтинг</div>
-                <div className={style.rateValue}>6.1</div>
+                <div className={style.rateValue}>{movie?.rate ?? '-'}</div>
             </section>
         </div>
     )
