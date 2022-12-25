@@ -5,10 +5,10 @@ const API = axios.create({
     baseURL: 'http://localhost:3001',
 });
 
-// const createPost = async (postData) => {
-//     const { data } = await API.post('/', postData);
-//     return data;
-// };
+export const createMovie = async (movieData : MovieDetailsData) => {
+    const { data } = await API.post('/movies', movieData);
+    return data;
+};
 
 // const deletePost = async (id) => {
 //     const { data } = await API.delete('/' + id);

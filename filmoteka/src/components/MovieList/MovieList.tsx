@@ -4,9 +4,11 @@ import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { Movie } from '../Movie/Movie';
 import { getMovies } from './../../Services/apiService';
 import style from './MovieList.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export const MovieList = () => {
     const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     useEffect(() => {
@@ -54,7 +56,7 @@ export const MovieList = () => {
                 <button
                     type="button"
                     className={style.createButton}
-                    onClick={() => {}}
+                    onClick={() => {navigate(`/movies/create`)}}
                 >Добавить</button>
             </div>
         </section>
