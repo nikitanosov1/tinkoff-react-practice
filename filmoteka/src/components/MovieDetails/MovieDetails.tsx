@@ -48,8 +48,8 @@ export const MovieDetails = () => {
                             <div className={style.roleTitle}>В главных ролях</div>
                             {movie?.actors
                                 .split(',')
-                                .map((actor) => (
-                                <div className={style.role}>{actor}</div>
+                                .map((actor, i) => (
+                                <div className={style.role} key={i}>{actor}</div>
                             ))}
                         </section>
 
