@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './MovieCreateForm.module.css';
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { createMovie, getMovieById } from '../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
@@ -22,10 +22,13 @@ const initMovieData = {
 export const MovieCreateForm = () => {
     const navigate = useNavigate();
     const [movie, setMovie] = useState<MovieDetailsData>(initMovieData);
+    const [ setMovies ] : any = useOutletContext();
 
     const saveData = () => {
-        const result = createMovie(movie);
-        console.log(result);
+        createMovie(movie)
+            .then((response) => {
+                setMovies((movies : MovieDetailsData[]) => [...movies, response])
+        });
         navigate(`/movies`);
     };
 

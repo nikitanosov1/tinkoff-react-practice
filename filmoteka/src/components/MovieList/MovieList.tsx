@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import type { MovieListProps, MovieProps } from '../../types';
+import type { MovieDetailsData, MovieListProps, MovieProps } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { Movie } from '../Movie/Movie';
 import { getMovies } from './../../Services/apiService';
 import style from './MovieList.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export const MovieList = () => {
-    const [movies, setMovies] = useState([]);
+export const MovieList = ({movies} : any) => {
     const navigate = useNavigate();
     const [filteredMovies, setFilteredMovies] = useState([]);
-
+    
     useEffect(() => {
-        getMovies().then((response) => {
-                setMovies(response);
-                setFilteredMovies(response);
-            }
-        );
-    }, []);
+        setFilteredMovies(() => movies);
+        }
+    , [movies]);
 
     const onChange = (event : any) => {
-        setFilteredMovies(Array.from(movies)
-            .filter((movie : MovieProps) => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
+        setFilteredMovies((prev) => Array.from(filteredMovies)
+            .filter((movie : MovieDetailsData) => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
         )
     }
 
@@ -35,7 +31,7 @@ export const MovieList = () => {
             ></input>
             <div className={style.movies}>
                 {filteredMovies
-                    .map((movie : MovieProps) => (
+                    .map((movie : MovieDetailsData) => (
                     <Movie
                         id={movie.id}
                         key={movie.id}

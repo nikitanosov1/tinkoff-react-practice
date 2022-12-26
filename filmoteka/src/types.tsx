@@ -7,7 +7,7 @@ export type MovieProps = {
 };
 
 export type MovieListProps = {
-    movies: MovieProps[];
+    movies: MovieDetailsData[];
 };
 
 export type SearchBarProps = {
