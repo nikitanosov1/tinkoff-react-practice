@@ -5,7 +5,7 @@ import style from './MovieDetails.module.css';
 import { useParams, useNavigate } from "react-router-dom";
 import { getMovieById } from './../../Services/apiService';
 import { MovieDetailsData } from '../../types';
-
+import NotFoundImage from './../../assets/404.png';
 
 export const MovieDetails = () => {
     const { id } = useParams();
@@ -30,7 +30,17 @@ export const MovieDetails = () => {
                 </div>
             </div>
             <div className={style.movieDetailsMain}>
-                <img className={style.imageWrapper} width='300px' height='300px' src={movie?.posterUrl} alt='poster'/>
+                <img
+                    className={style.imageWrapper}
+                    width='300px'
+                    height='300px'
+                    src={movie?.posterUrl}
+                    onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src=NotFoundImage;
+                    }}
+                    alt='poster'
+                />
                 <div className={style.movieDetailsInfo}>
                     <div className={style.title}>{movie?.title}</div>
                     <div className={style.author}>{movie?.director}</div>
