@@ -78,7 +78,13 @@ export const MovieList = ({movies} : Movies) => {
 
             <div className={style.footer}>
                 <div className={style.footerLabel}>
-                    Найдено {filteredMovies.length} элементов
+                    {filteredMovies.length === 1 ? 'Найден' : 'Найдено'}{' '}
+                    {filteredMovies.length}{' '}
+                    {filteredMovies.length > 1 && filteredMovies.length < 5
+                        ? 'элемента'
+                        : filteredMovies.length === 1
+                        ? 'элемент'
+                        : 'элементов'}
                 </div>
                 <button
                     type="button"
