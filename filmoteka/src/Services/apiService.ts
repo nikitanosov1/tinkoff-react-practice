@@ -10,10 +10,10 @@ export const createMovie = async (movieData : MovieDetailsData) => {
     return data;
 };
 
-// const deletePost = async (id) => {
-//     const { data } = await API.delete('/' + id);
-//     return data;
-// };
+export const getGenres = async () => {
+    const { data } = await API.get('/genres');
+    return data;
+};
 
 export const editMovie = async (movieData : MovieDetailsData) => {
     console.log(movieData);

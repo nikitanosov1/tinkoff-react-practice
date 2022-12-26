@@ -46,3 +46,7 @@ export type MovieDetailsData = {
     rate: number;
     posterUrl: string;
 };
+
+export type Movies = {
+    movies: MovieDetailsData[];
+}

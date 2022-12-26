@@ -1,24 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import type { MovieDetailsData } from '../../types';
+import React, { useEffect, useRef, useState } from 'react'
+import type { MovieDetailsData, Movies } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { Movie } from '../Movie/Movie';
 import style from './MovieList.module.css';
 import { useNavigate } from 'react-router-dom';
+import { GenresFilter } from '../GenresFilter/GenresFilter';
 
-export const MovieList = ({movies} : any) => {
+export const MovieList = ({movies} : Movies) => {
     const navigate = useNavigate();
-    const [filteredMovies, setFilteredMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState<any>([]);
     const [idSelectedMovie, setIdSelectedMovie] = useState(-1);
+    const [genres, setGenres] = useState<any>({});
+    const input = useRef<any>(null);
     
     useEffect(() => {
         setFilteredMovies(() => movies);
         }
     , [movies]);
 
-    const onChange = (event : any) => {
-        setFilteredMovies((prev) => Array.from(filteredMovies)
-            .filter((movie : MovieDetailsData) => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
-        )
+    useEffect(() => {
+            onChange();
+        }
+    , [genres]);
+
+    const onChange = () => {
+        let inputValue = input.current.value;
+
+        setFilteredMovies((prev : any) => Array.from(movies)
+            .filter((movie : MovieDetailsData) => movie.title.toLowerCase().includes(inputValue.toLowerCase()))
+            .filter((movie : MovieDetailsData) => {
+                let hash = movie.genres.reduce((acc : any, i : any) => { acc[i] = true; return acc; }, {});
+                for(let genre in genres) {
+                    if (!(genre in hash) && genres[genre]) {
+                        // Если этого жанра НЕТ у фильма И этот жанр включён, то не подходит фильмец 
+                        return false;
+                    }
+                }
+                return true;
+            })
+        );
     }
 
     return (
@@ -28,7 +48,14 @@ export const MovieList = ({movies} : any) => {
                 className={style.input} 
                 placeholder='Введите название фильма'
                 onChange={onChange}
+                ref={input}
             ></input>
+
+            <GenresFilter
+                genres={genres} 
+                setGenres={setGenres}
+            />
+            
             <div className={style.movies}>
                 {filteredMovies
                     .map((movie : MovieDetailsData) => (
