@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export const MovieList = ({movies} : any) => {
     const navigate = useNavigate();
     const [filteredMovies, setFilteredMovies] = useState([]);
+    const [idSelectedMovie, setIdSelectedMovie] = useState(-1);
     
     useEffect(() => {
         setFilteredMovies(() => movies);
@@ -37,7 +38,11 @@ export const MovieList = ({movies} : any) => {
                         title={movie.title} 
                         year={movie.year} 
                         genres={movie.genres}
-                        selected={false}
+                        selected={movie.id === idSelectedMovie}
+                        onClick={() => {
+                            setIdSelectedMovie(movie.id);
+                            navigate(`/movies/${movie.id}`);
+                        }}
                     />
                 ))}
             </div>

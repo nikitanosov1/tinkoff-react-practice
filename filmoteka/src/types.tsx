@@ -4,6 +4,7 @@ export type MovieProps = {
     year: number;
     genres: string[];
     selected: boolean;
+    onClick: any;
 };
 
 export type MovieListProps = {
