@@ -31,7 +31,8 @@
       "runtime": "92",
       "genres": [
         "Comedy",
-        "Fantasy"
+        "Fantasy",
+        "ffdf"
       ],
       "director": "Tim Burton",
       "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
@@ -2176,6 +2177,48 @@
       "genres": [],
       "runtime": 0,
       "director": ""
+    },
+    {
+      "id": 149,
+      "title": "ыфвфыв",
+      "year": "23",
+      "plot": "вававы",
+      "posterUrl": "вавыа",
+      "rate": "0ва",
+      "actors": "ваыва",
+      "genres": [],
+      "runtime": 0,
+      "director": "вавы"
+    },
+    {
+      "id": 150,
+      "title": "тест",
+      "year": "1000",
+      "plot": "тест",
+      "posterUrl": "тест",
+      "rate": "100",
+      "actors": "биба, боба, я",
+      "genres": [
+        "биба",
+        " боба",
+        " я"
+      ],
+      "runtime": 0,
+      "director": "майкл"
+    },
+    {
+      "id": 151,
+      "title": "gfd",
+      "year": "234",
+      "plot": "fg",
+      "posterUrl": "fg",
+      "rate": "3",
+      "actors": "fg",
+      "genres": [
+        "fg"
+      ],
+      "runtime": "34",
+      "director": "fg"
     }
   ]
 }

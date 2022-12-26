@@ -30,9 +30,13 @@ export const MovieCreateForm = () => {
     };
 
     const handleChangeFor = (propertyName: string) => (event: { target: { value: any; }; }) => {
+        let newValue = event.target.value;
+        if (propertyName === 'genres') {
+            newValue = newValue.split(',');
+        }
         const newMovie : any = {
           ...movie,
-          [propertyName]: event.target.value
+          [propertyName]: newValue
         };
         setMovie((movie) => newMovie);
     }
@@ -109,6 +113,26 @@ export const MovieCreateForm = () => {
                 value={movie?.director}
                 id='director'
                 onChange={handleChangeFor('director')}
+            />
+
+            <label className={style.label}>Укажите список жанров</label>
+            <input
+                type="text"
+                placeholder='Введите список жанров (через ,)'
+                className={style.input}
+                value={String(movie?.genres)}
+                id='genres'
+                onChange={handleChangeFor('genres')}
+            />
+
+            <label className={style.label}>Укажите продолжительность</label>
+            <input
+                type="text"
+                placeholder='Введите список жанров'
+                className={style.input}
+                value={movie?.runtime}
+                id='runtime'
+                onChange={handleChangeFor('runtime')}
             />
 
             <HorizontalLine />
