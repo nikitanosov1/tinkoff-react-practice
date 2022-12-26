@@ -8,7 +8,7 @@ export const Header = () => {
           <div className={style.leftText}>Админка фильмотеки</div>
           <div className={style.rightRectangle}>
             <div className={style.rightText}>
-              Имя того кто это все закодил
+              Носов Никитосич
             </div>
           </div>
       </div>
