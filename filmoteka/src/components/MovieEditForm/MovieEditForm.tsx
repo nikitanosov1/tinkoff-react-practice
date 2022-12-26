@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './MovieEditForm.module.css';
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { editMovie, getMovieById } from '../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
@@ -21,6 +21,7 @@ const initMovieData = {
   };
 
 export const MovieEditForm = () => {
+    const [setMovies, movies] : any = useOutletContext();
     const { id } = useParams();
     const navigate = useNavigate();
     const [movie, setMovie] = useState<MovieDetailsData>(initMovieData);
@@ -35,6 +36,10 @@ export const MovieEditForm = () => {
 
     const saveData = () => {
         movie && editMovie(movie);
+        const newMovies = [...movies];
+        const index = newMovies.findIndex(x => x.id === movie.id);
+        newMovies[index] = movie;
+        setMovies((prev : any) => newMovies);
         NotificationManager.success(`😃😃😃`, 'Фильм отредактирован');
         navigate(`/movies/${id}`);
     };
@@ -63,6 +68,7 @@ export const MovieEditForm = () => {
                 value={movie?.title}
                 id='title'
                 onChange={handleChangeFor('title')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Год выпуска</label>
@@ -73,6 +79,7 @@ export const MovieEditForm = () => {
                 value={movie?.year}
                 id='year'
                 onChange={handleChangeFor('year')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Описание</label>
@@ -83,6 +90,7 @@ export const MovieEditForm = () => {
                 value={movie?.plot}
                 id='plot'
                 onChange={handleChangeFor('plot')}
+                autoComplete='off'
             />
             
             <label className={style.label}>Укажите ссылку на обложку</label>
@@ -93,6 +101,7 @@ export const MovieEditForm = () => {
                 value={movie?.posterUrl}
                 id='posterUrl'
                 onChange={handleChangeFor('posterUrl')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Рейтинг</label>
@@ -103,6 +112,7 @@ export const MovieEditForm = () => {
                 value={movie?.rate}
                 id='rate'
                 onChange={handleChangeFor('rate')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите список актеров</label>
@@ -113,6 +123,7 @@ export const MovieEditForm = () => {
                 value={movie?.actors}
                 id='actors'
                 onChange={handleChangeFor('actors')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Режиссер</label>
@@ -123,6 +134,7 @@ export const MovieEditForm = () => {
                 value={movie?.director}
                 id='director'
                 onChange={handleChangeFor('director')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите список жанров</label>
@@ -133,6 +145,7 @@ export const MovieEditForm = () => {
                 value={String(movie?.genres)}
                 id='genres'
                 onChange={handleChangeFor('genres')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите продолжительность</label>
@@ -143,6 +156,7 @@ export const MovieEditForm = () => {
                 value={movie?.runtime}
                 id='runtime'
                 onChange={handleChangeFor('runtime')}
+                autoComplete='off'
             />
 
             <HorizontalLine />

@@ -58,6 +58,7 @@ export const MovieCreateForm = () => {
                 value={movie?.title}
                 id='title'
                 onChange={handleChangeFor('title')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Год выпуска</label>
@@ -68,6 +69,7 @@ export const MovieCreateForm = () => {
                 value={movie?.year}
                 id='year'
                 onChange={handleChangeFor('year')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Описание</label>
@@ -78,6 +80,7 @@ export const MovieCreateForm = () => {
                 value={movie?.plot}
                 id='plot'
                 onChange={handleChangeFor('plot')}
+                autoComplete='off'
             />
             
             <label className={style.label}>Укажите ссылку на обложку</label>
@@ -88,6 +91,7 @@ export const MovieCreateForm = () => {
                 value={movie?.posterUrl}
                 id='posterUrl'
                 onChange={handleChangeFor('posterUrl')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Рейтинг</label>
@@ -98,6 +102,7 @@ export const MovieCreateForm = () => {
                 value={movie?.rate}
                 id='rate'
                 onChange={handleChangeFor('rate')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите список актеров</label>
@@ -108,6 +113,7 @@ export const MovieCreateForm = () => {
                 value={movie?.actors}
                 id='actors'
                 onChange={handleChangeFor('actors')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Режиссер</label>
@@ -118,6 +124,7 @@ export const MovieCreateForm = () => {
                 value={movie?.director}
                 id='director'
                 onChange={handleChangeFor('director')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите список жанров</label>
@@ -128,6 +135,7 @@ export const MovieCreateForm = () => {
                 value={String(movie?.genres)}
                 id='genres'
                 onChange={handleChangeFor('genres')}
+                autoComplete='off'
             />
 
             <label className={style.label}>Укажите продолжительность</label>
@@ -138,6 +146,7 @@ export const MovieCreateForm = () => {
                 value={movie?.runtime}
                 id='runtime'
                 onChange={handleChangeFor('runtime')}
+                autoComplete='off'
             />
 
             <HorizontalLine />

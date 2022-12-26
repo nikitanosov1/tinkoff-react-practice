@@ -17,7 +17,7 @@ export const Main = () => {
   return (
     <main className={style.main}>
       <MovieList movies={movies}/>
-      <Outlet context={[setMovies]}/>
+      <Outlet context={[setMovies, movies]}/>
     </main>
   )
 }

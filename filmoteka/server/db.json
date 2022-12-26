@@ -72,7 +72,7 @@
     {
       "id": 4,
       "title": "Кузьма Евгений",
-      "year": "1986",
+      "year": "3000",
       "runtime": "97",
       "genres": [
         "Adventure",
@@ -97,7 +97,8 @@
       "director": "Bryan Singer",
       "actors": "Tom Cruise, Kenneth Branagh, Bill Nighy, Tom Wilkinson",
       "plot": "A dramatization of the 20 July assassination and political coup plot by desperate renegade German Army officers against Hitler during World War II.",
-      "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTg3Njc2ODEyN15BMl5BanBnXkFtZTcwNTAwMzc3NA@@._V1_SX300.jpg"
+      "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTg3Njc2ODEyN15BMl5BanBnXkFtZTcwNTAwMzc3NA@@._V1_SX300.jpg",
+      "rate": 0
     },
     {
       "id": 6,
@@ -160,7 +161,7 @@
     },
     {
       "id": 10,
-      "title": "Stardust",
+      "title": "dsfsdfdgfdg",
       "year": "2007",
       "runtime": "127",
       "genres": [
@@ -235,7 +236,7 @@
     },
     {
       "id": 15,
-      "title": "Looper",
+      "title": "sdfsdfdsfs",
       "year": "2012",
       "runtime": "119",
       "genres": [
@@ -246,7 +247,8 @@
       "director": "Rian Johnson",
       "actors": "Joseph Gordon-Levitt, Bruce Willis, Emily Blunt, Paul Dano",
       "plot": "In 2074, when the mob wants to get rid of someone, the target is sent into the past, where a hired gun awaits - someone like Joe - who one day learns the mob wants to 'close the loop' by sending back Joe's future self for assassination.",
-      "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SX300.jpg"
+      "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTY3NTY0MjEwNV5BMl5BanBnXkFtZTcwNTE3NDA1OA@@._V1_SX300.jpg",
+      "rate": 0
     },
     {
       "id": 16,
@@ -2389,6 +2391,33 @@
       "actors": "",
       "genres": [],
       "runtime": 0,
+      "director": ""
+    },
+    {
+      "id": 166,
+      "title": "старый фильм",
+      "year": "2000",
+      "plot": "что-то",
+      "posterUrl": "нет",
+      "rate": "5",
+      "actors": "ва, боба",
+      "genres": [
+        "триллер",
+        " хоррор"
+      ],
+      "runtime": "295",
+      "director": "я"
+    },
+    {
+      "id": 167,
+      "title": "новый фильм",
+      "year": "1000",
+      "plot": "фывцйцй",
+      "posterUrl": "ваыаыва",
+      "rate": "2",
+      "actors": "ыфв, ывава",
+      "genres": [],
+      "runtime": "256",
       "director": ""
     }
   ]
