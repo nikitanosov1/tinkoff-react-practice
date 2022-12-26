@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import type { MovieDetailsData, MovieListProps, MovieProps } from '../../types';
+import type { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { Movie } from '../Movie/Movie';
-import { getMovies } from './../../Services/apiService';
 import style from './MovieList.module.css';
 import { useNavigate } from 'react-router-dom';
 

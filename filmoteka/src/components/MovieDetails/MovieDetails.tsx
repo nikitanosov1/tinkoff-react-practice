@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Camel from './../../assets/camel.jpg';
 import CopyButton from './../../assets/copy.png';
 import EditButton from './../../assets/edit.png';
 import style from './MovieDetails.module.css';
@@ -23,15 +22,15 @@ export const MovieDetails = () => {
     return (
         <div className={style.movieDetails}>
             <div className={style.movieDetailsHeader}>
-                <div className={style.idBlock}>Id: {movie?.id}<img className={style.copyButtonImage} src={CopyButton}></img></div>
+                <div className={style.idBlock}>Id: {movie?.id}<img alt='copy' className={style.copyButtonImage} src={CopyButton}></img></div>
                 <div 
                     className={style.editBlock}
                     onClick={() => {navigate(`/movies/${id}/edit`)}}
-                ><img className={style.editButtonImage} src={EditButton}></img>Редактировать
+                ><img className={style.editButtonImage} src={EditButton} alt='edit'></img>Редактировать
                 </div>
             </div>
             <div className={style.movieDetailsMain}>
-                <img className={style.imageWrapper} width='300px' height='300px' src={movie?.posterUrl} alt="camel"/>
+                <img className={style.imageWrapper} width='300px' height='300px' src={movie?.posterUrl} alt='poster'/>
                 <div className={style.movieDetailsInfo}>
                     <div className={style.title}>{movie?.title}</div>
                     <div className={style.author}>{movie?.director}</div>

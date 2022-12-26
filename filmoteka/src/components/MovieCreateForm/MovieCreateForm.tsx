@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import style from './MovieCreateForm.module.css';
-import { useOutletContext, useParams } from "react-router-dom";
-import { createMovie, getMovieById } from '../../Services/apiService';
+import { useOutletContext} from "react-router-dom";
+import { createMovie } from '../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { useNavigate } from 'react-router-dom';
