@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getMovieById } from './../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import NotFoundImage from './../../assets/404.png';
+import { NotificationManager } from 'react-notifications';
 
 export const MovieDetails = () => {
     const { id } = useParams();
@@ -22,7 +23,13 @@ export const MovieDetails = () => {
     return (
         <div className={style.movieDetails}>
             <div className={style.movieDetailsHeader}>
-                <div className={style.idBlock}>Id: {movie?.id}<img alt='copy' className={style.copyButtonImage} src={CopyButton}></img></div>
+                <div 
+                    className={style.idBlock}
+                    onClick={() => {
+                        navigator.clipboard.writeText(`${movie?.id}`);
+                        NotificationManager.success(`id = ${movie?.id}`, 'Id успешно скопирован');
+                    }}
+                >Id: {movie?.id}<img alt='copy' className={style.copyButtonImage} src={CopyButton}></img></div>
                 <div 
                     className={style.editBlock}
                     onClick={() => {navigate(`/movies/${id}/edit`)}}

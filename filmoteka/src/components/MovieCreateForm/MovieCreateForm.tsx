@@ -5,6 +5,7 @@ import { createMovie } from '../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { useNavigate } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 
 const initMovieData = {
     id: 0,
@@ -29,6 +30,7 @@ export const MovieCreateForm = () => {
             .then((response) => {
                 setMovies((movies : MovieDetailsData[]) => [...movies, response])
         });
+        NotificationManager.success(`${movie?.title}`, 'Фильм создан');
         navigate(`/movies`);
     };
 

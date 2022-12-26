@@ -5,6 +5,7 @@ import { editMovie, getMovieById } from '../../Services/apiService';
 import { MovieDetailsData } from '../../types';
 import { HorizontalLine } from '../HorizontalLine/HorizontalLine';
 import { useNavigate } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 
 const initMovieData = {
     id: 0,
@@ -34,6 +35,7 @@ export const MovieEditForm = () => {
 
     const saveData = () => {
         movie && editMovie(movie);
+        NotificationManager.success(`😃😃😃`, 'Фильм отредактирован');
         navigate(`/movies/${id}`);
     };
 
@@ -149,7 +151,9 @@ export const MovieEditForm = () => {
                 <button 
                     type="button"
                     className={style.cancelButton}
-                    onClick={() => {navigate(`/movies/${id}`)}}
+                    onClick={() => {
+                        navigate(`/movies/${id}`);
+                    }}
                 >Отменить</button>
                 <button
                     type="button"

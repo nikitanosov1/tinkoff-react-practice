@@ -4,6 +4,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom"
 
+import {NotificationContainer} from "react-notifications";
+import 'react-notifications/lib/notifications.css';
+
 import 'normalize.css';
 import './index.css';
 
@@ -15,6 +18,7 @@ root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <NotificationContainer/>
   </React.StrictMode>
 );
 
