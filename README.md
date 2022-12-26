@@ -33,6 +33,8 @@ npm run start-react
 
 >Имеется [react-router-dom](https://www.npmjs.com/package/react-router-dom) для навигации между компонентами
 
+>Css стили используются как <code>CSS Modules</code>
+
 # Превью приложения
 
 https://user-images.githubusercontent.com/71886485/209585104-5998d6f7-e62a-4c24-b264-0956907d3c0b.mp4
