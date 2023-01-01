@@ -1,10 +1,8 @@
 import React from 'react'
 import type { MovieProps } from '../../types';
 import style from './Movie.module.css';
-import { useNavigate } from 'react-router-dom';
 
 export const Movie = ({id, title, year, genres, selected, onClick, ...props} : MovieProps) => {
-    const navigate = useNavigate();
 
     return (
         <div
