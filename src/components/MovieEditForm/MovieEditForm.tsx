@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./MovieEditForm.module.css";
 import { useOutletContext, useParams } from "react-router-dom";
-import { editMovie, getMovieById } from "../../Services/apiService";
+import { editMovie, getMovieById, getMovies } from "../../Services/apiService";
 import { MovieDetailsData } from "../../types";
 import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 import { useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import { Input } from "../Input/Input";
 
 const initMovieData = {
   id: 0,
@@ -29,18 +30,29 @@ export const MovieEditForm = () => {
   useEffect(() => {
     getMovieById(Number(id)).then((response) => {
       if (!("rate" in response)) response.rate = 0;
-      setMovie((prev) => response);
+      setMovie(response);
     });
-  }, [id]);
+  }, []);
 
   const saveData = () => {
-    movie && editMovie(movie);
-    const newMovies = [...movies];
-    const index = newMovies.findIndex((x) => x.id === movie.id);
-    newMovies[index] = movie;
-    setMovies((prev: any) => newMovies);
-    NotificationManager.success(`😃😃😃`, "Фильм отредактирован");
-    navigate(`/movies/${id}`);
+    editMovie(movie)
+      .then((response) => {
+        getMovies()
+          .then((newMovies) => {
+            setMovies((prev: any) => newMovies);
+            NotificationManager.success(`😃😃😃`, "Фильм отредактирован");
+            navigate(`/movies/${id}`);
+          })
+          .catch(() => {
+            NotificationManager.error(
+              `;(`,
+              "Ошибка при обновлении списка фильмов"
+            );
+          });
+      })
+      .catch(() =>
+        NotificationManager.error(`;(`, "Ошибка при редактировании фильма")
+      );
   };
 
   const handleChangeFor =
@@ -49,114 +61,86 @@ export const MovieEditForm = () => {
       if (propertyName === "genres") {
         newValue = newValue.split(",");
       }
-      const newMovie: any = {
+      setMovie((movie) => ({
         ...movie,
         [propertyName]: newValue,
-      };
-      setMovie((movie) => newMovie);
+      }));
     };
 
   return (
     <form className={style.form}>
       <div className={style.title}>Редактирование</div>
 
-      <label className={style.label}>Название фильма</label>
-      <input
-        type="text"
+      <Input
+        label="Название фильма"
         placeholder="Введите название фильма"
-        className={style.input}
         value={movie?.title}
         id="title"
-        onChange={handleChangeFor("title")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Год выпуска</label>
-      <input
-        type="text"
+      <Input
+        label="Год выпуска"
         placeholder="Введите год выпуска"
-        className={style.input}
-        value={movie?.year}
+        value={String(movie?.year)}
         id="year"
-        onChange={handleChangeFor("year")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Описание</label>
-      <input
-        type="text"
+      <Input
+        label="Описание"
         placeholder="Введите ..."
-        className={style.input}
         value={movie?.plot}
         id="plot"
-        onChange={handleChangeFor("plot")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Укажите ссылку на обложку</label>
-      <input
-        type="text"
+      <Input
+        label="Укажите ссылку на обложку"
         placeholder="Введите ..."
-        className={style.input}
         value={movie?.posterUrl}
         id="posterUrl"
-        onChange={handleChangeFor("posterUrl")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Рейтинг</label>
-      <input
-        type="text"
+      <Input
+        label="Рейтинг"
         placeholder="Задайте рейтинг"
-        className={style.input}
-        value={movie?.rate}
+        value={String(movie?.rate)}
         id="rate"
-        onChange={handleChangeFor("rate")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Укажите список актеров</label>
-      <input
-        type="text"
+      <Input
+        label="Укажите список актеров"
         placeholder="Введите актеров (через ,)"
-        className={style.input}
         value={movie?.actors}
         id="actors"
-        onChange={handleChangeFor("actors")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Режиссер</label>
-      <input
-        type="text"
+      <Input
+        label="Режиссер"
         placeholder="Введите ..."
-        className={style.input}
         value={movie?.director}
         id="director"
-        onChange={handleChangeFor("director")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Укажите список жанров</label>
-      <input
-        type="text"
-        placeholder="Введите список жанров (через ,)"
-        className={style.input}
+      <Input
+        label="Укажите список жанров"
+        placeholder="Введите ..."
         value={String(movie?.genres)}
         id="genres"
-        onChange={handleChangeFor("genres")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
-      <label className={style.label}>Укажите продолжительность</label>
-      <input
-        type="text"
-        placeholder="Введите список жанров"
-        className={style.input}
-        value={movie?.runtime}
+      <Input
+        label="Укажите продолжительность"
+        placeholder="Введите продолжительность"
+        value={String(movie?.runtime)}
         id="runtime"
-        onChange={handleChangeFor("runtime")}
-        autoComplete="off"
+        onChange={handleChangeFor}
       />
 
       <HorizontalLine />

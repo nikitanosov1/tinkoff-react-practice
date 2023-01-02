@@ -13,20 +13,21 @@ export const GenresFilter = ({ genres, setGenres }: any) => {
     });
   }, []);
 
+  const changeStateOfGenre = (genre: any) => () => {
+    const newGenres: any = {
+      ...genres,
+    };
+    newGenres[genre] = !newGenres[genre];
+    setGenres((prev: any) => newGenres);
+  };
+
   return (
     <div className={style.genres}>
       {Object.keys(genres).map((genre, i) => (
         <span
           className={genres[genre] ? style.activeGenre : style.genre}
           key={genre}
-          onClick={() => {
-            const newGenres: any = {
-              ...genres,
-            };
-            newGenres[genre] = !newGenres[genre];
-            setGenres((prev: any) => newGenres);
-            // onChange();
-          }}
+          onClick={changeStateOfGenre(genre)}
         >
           {genre}
         </span>

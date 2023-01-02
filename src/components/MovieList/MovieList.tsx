@@ -3,15 +3,16 @@ import type { MovieDetailsData, Movies } from "../../types";
 import { HorizontalLine } from "../HorizontalLine/HorizontalLine";
 import { Movie } from "../Movie/Movie";
 import style from "./MovieList.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GenresFilter } from "../GenresFilter/GenresFilter";
+import { MoviesNotFound } from "../MoviesNotFound/MoviesNotFound";
 
 export const MovieList = ({ movies }: Movies) => {
   const navigate = useNavigate();
   const [filteredMovies, setFilteredMovies] = useState<any>([]);
-  const [idSelectedMovie, setIdSelectedMovie] = useState(-1);
   const [genres, setGenres] = useState<any>({});
   const input = useRef<any>(null);
+  const { id } = useParams();
 
   useEffect(() => {
     setFilteredMovies(() => movies);
@@ -21,29 +22,50 @@ export const MovieList = ({ movies }: Movies) => {
     onChange();
   }, [genres]);
 
-  const onChange = () => {
-    let inputValue = input.current.value;
-
-    setFilteredMovies((prev: any) =>
-      Array.from(movies)
-        .filter((movie: MovieDetailsData) =>
-          movie.title.toLowerCase().includes(inputValue.toLowerCase())
-        )
-        .filter((movie: MovieDetailsData) => {
-          let hash = movie.genres.reduce((acc: any, i: any) => {
-            acc[i] = true;
-            return acc;
-          }, {});
-          for (let genre in genres) {
-            if (!(genre in hash) && genres[genre]) {
-              // Если этого жанра НЕТ у фильма И этот жанр включён, то не подходит фильмец
-              return false;
-            }
-          }
-          return true;
-        })
+  const filterMoviesByInput = (arrMovies: MovieDetailsData[]) => {
+    const inputValue = input.current.value;
+    return arrMovies.filter((movie: MovieDetailsData) =>
+      movie.title.toLowerCase().includes(inputValue.toLowerCase())
     );
   };
+
+  const filterMoviesByGenres = (arrMovies: MovieDetailsData[]) => {
+    return arrMovies.filter((movie: MovieDetailsData) => {
+      const hash = movie.genres.reduce((acc: any, i: any) => {
+        acc[i] = true;
+        return acc;
+      }, {});
+      for (let genre in genres) {
+        if (!(genre in hash) && genres[genre]) {
+          // Если этого жанра НЕТ у фильма И этот жанр включён, то не подходит фильмец
+          return false;
+        }
+      }
+      return true;
+    });
+  };
+
+  const onChange = () => {
+    setFilteredMovies((prev: any) => {
+      const filteredMoviesByInput = filterMoviesByInput(movies);
+      const filteredMoviesByInputAndGenres = filterMoviesByGenres(
+        filteredMoviesByInput
+      );
+      return filteredMoviesByInputAndGenres;
+    });
+  };
+
+  const getFooterText = () => (
+    <>
+      {filteredMovies.length === 1 ? "Найден" : "Найдено"}{" "}
+      {filteredMovies.length}{" "}
+      {filteredMovies.length > 1 && filteredMovies.length < 5
+        ? "элемента"
+        : filteredMovies.length === 1
+        ? "элемент"
+        : "элементов"}
+    </>
+  );
 
   return (
     <section className={style.leftSection}>
@@ -58,34 +80,29 @@ export const MovieList = ({ movies }: Movies) => {
       <GenresFilter genres={genres} setGenres={setGenres} />
 
       <div className={style.movies}>
-        {filteredMovies.map((movie: MovieDetailsData) => (
-          <Movie
-            id={movie.id}
-            key={movie.id}
-            title={movie.title}
-            year={movie.year}
-            genres={movie.genres}
-            selected={movie.id === idSelectedMovie}
-            onClick={() => {
-              setIdSelectedMovie(movie.id);
-              navigate(`/movies/${movie.id}`);
-            }}
-          />
-        ))}
+        {filteredMovies.length === 0 ? (
+          <MoviesNotFound />
+        ) : (
+          filteredMovies.map((movie: MovieDetailsData) => (
+            <Movie
+              id={movie.id}
+              key={movie.id}
+              title={movie.title}
+              year={movie.year}
+              genres={movie.genres}
+              selected={String(movie.id) === id}
+              onClick={() => {
+                navigate(`/movies/${movie.id}`);
+              }}
+            />
+          ))
+        )}
       </div>
 
       <HorizontalLine />
 
       <div className={style.footer}>
-        <div className={style.footerLabel}>
-          {filteredMovies.length === 1 ? "Найден" : "Найдено"}{" "}
-          {filteredMovies.length}{" "}
-          {filteredMovies.length > 1 && filteredMovies.length < 5
-            ? "элемента"
-            : filteredMovies.length === 1
-            ? "элемент"
-            : "элементов"}
-        </div>
+        <div className={style.footerLabel}>{getFooterText()}</div>
         <button
           type="button"
           className={style.createButton}

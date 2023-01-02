@@ -14,24 +14,24 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState<MovieDetailsData>();
 
   useEffect(() => {
-    getMovieById(Number(id)).then((response) => {
-      setMovie(response);
-    });
+    getMovieById(Number(id))
+      .then((response) => {
+        setMovie(response);
+      })
+      .catch(() => {
+        NotificationManager.error(`;(`, "Ошибка при получении фильма по id");
+      });
   }, [id]);
+
+  const saveToBuffer = () => {
+    navigator.clipboard.writeText(`${movie?.id}`);
+    NotificationManager.success(`id = ${movie?.id}`, "Id успешно скопирован");
+  };
 
   return (
     <div className={style.movieDetails}>
       <div className={style.movieDetailsHeader}>
-        <div
-          className={style.idBlock}
-          onClick={() => {
-            navigator.clipboard.writeText(`${movie?.id}`);
-            NotificationManager.success(
-              `id = ${movie?.id}`,
-              "Id успешно скопирован"
-            );
-          }}
-        >
+        <div className={style.idBlock} onClick={saveToBuffer}>
           Id: {movie?.id}
           <img
             alt="copy"

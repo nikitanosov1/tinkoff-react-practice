@@ -26,7 +26,7 @@
   "movies": [
     {
       "id": 1,
-      "title": "женек в платье",
+      "title": "женек в платьеffроро",
       "year": "3228",
       "runtime": "92",
       "genres": [
@@ -71,12 +71,11 @@
     },
     {
       "id": 4,
-      "title": "Кузьма Евгений",
+      "title": "йцуйц",
       "year": "3000",
       "runtime": "97",
       "genres": [
-        "Adventure",
-        "Comedy"
+        "Adventure"
       ],
       "director": "Peter Faiman",
       "actors": "Paul Hogan, Linda Kozlowski, John Meillon, David Gulpilil",
@@ -206,7 +205,7 @@
     },
     {
       "id": 13,
-      "title": "No Country for Old Men",
+      "title": "dfsdf",
       "year": "2007",
       "runtime": "122",
       "genres": [
@@ -217,7 +216,8 @@
       "director": "Ethan Coen, Joel Coen",
       "actors": "Tommy Lee Jones, Javier Bardem, Josh Brolin, Woody Harrelson",
       "plot": "Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg"
+      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg",
+      "rate": 0
     },
     {
       "id": 14,
