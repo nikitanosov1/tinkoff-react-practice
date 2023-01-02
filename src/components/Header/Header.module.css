@@ -1,5 +1,5 @@
 .header {
-  background: #FAFAFA;
+  background: #fafafa;
   padding-bottom: 7px;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .leftText {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -27,15 +27,14 @@
 }
 
 .rightText {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  
+
   color: #000000;
 }
-
 
 .rightRectangle {
   display: flex;
@@ -44,6 +43,6 @@
   width: 233px;
   height: 37.9px;
 
-  background: #FFDD2D;
+  background: #ffdd2d;
   border-radius: 8px;
 }
