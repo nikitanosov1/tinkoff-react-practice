@@ -21,7 +21,7 @@ const initMovieData = {
 };
 
 export const MovieEditForm = () => {
-  const [setMovies, movies]: any = useOutletContext();
+  const [setMovies, movies] = useOutletContext<any>();
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState<MovieDetailsData>(initMovieData);

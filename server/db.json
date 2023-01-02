@@ -884,8 +884,8 @@
     },
     {
       "id": 60,
-      "title": "Despicable Me 2",
-      "year": "2013",
+      "title": "Илья не умеет играть",
+      "year": "2023",
       "runtime": "98",
       "genres": [
         "Animation",
@@ -895,7 +895,8 @@
       "director": "Pierre Coffin, Chris Renaud",
       "actors": "Steve Carell, Kristen Wiig, Benjamin Bratt, Miranda Cosgrove",
       "plot": "When Gru, the world's most super-bad turned super-dad has been recruited by a team of officials to stop lethal muscle and a host of Gru's own, He has to fight back with new gadgetry, cars, and more minion madness.",
-      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjExNjAyNTcyMF5BMl5BanBnXkFtZTgwODQzMjQ3MDE@._V1_SX300.jpg"
+      "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjExNjAyNTcyMF5BMl5BanBnXkFtZTgwODQzMjQ3MDE@._V1_SX300.jpg",
+      "rate": 0
     },
     {
       "id": 61,
