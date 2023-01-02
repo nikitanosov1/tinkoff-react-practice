@@ -11,7 +11,7 @@ export const Main = () => {
   useEffect(() => {
     getMovies()
       .then((response) => {
-        setMovies((prev) => response);
+        setMovies(response);
       })
       .catch(() => {
         NotificationManager.error(`;(`, "Ошибка при обновлении списка фильмов");

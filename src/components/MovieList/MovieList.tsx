@@ -55,18 +55,6 @@ export const MovieList = ({ movies }: Movies) => {
     });
   };
 
-  const getFooterText = () => (
-    <>
-      {filteredMovies.length === 1 ? "Найден" : "Найдено"}{" "}
-      {filteredMovies.length}{" "}
-      {filteredMovies.length > 1 && filteredMovies.length < 5
-        ? "элемента"
-        : filteredMovies.length === 1
-        ? "элемент"
-        : "элементов"}
-    </>
-  );
-
   return (
     <section className={style.leftSection}>
       <input
@@ -102,7 +90,9 @@ export const MovieList = ({ movies }: Movies) => {
       <HorizontalLine />
 
       <div className={style.footer}>
-        <div className={style.footerLabel}>{getFooterText()}</div>
+        <div className={style.footerLabel}>
+          {getFooterText(filteredMovies.length)}
+        </div>
         <button
           type="button"
           className={style.createButton}
@@ -115,4 +105,19 @@ export const MovieList = ({ movies }: Movies) => {
       </div>
     </section>
   );
+};
+
+const getFooterText = (filteredMoviesLength: number) => {
+  let result: string = "";
+  result += filteredMoviesLength === 1 ? "Найден" : "Найдено";
+  result += " ";
+  result += filteredMoviesLength;
+  result += " ";
+  result +=
+    filteredMoviesLength > 1 && filteredMoviesLength < 5
+      ? "элемента"
+      : filteredMoviesLength === 1
+      ? "элемент"
+      : "элементов";
+  return result;
 };
